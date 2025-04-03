@@ -6,11 +6,13 @@ function solution(X, Y) {
     for(let num of X){
         xCount[num]++;
     }
+    console.log(xCount);
     
     //Y 숫자 카운트
     for(let num of Y){
         yCount[num]++;
     }
+    console.log(yCount);
     
     let numArr = [];
     
@@ -22,8 +24,10 @@ function solution(X, Y) {
     
     let result = numArr.join("");
     
+    // 하나도 겹치는 게 없으면
     if(result === "") return "-1"
     
+    // 0이 하나 이상 겹치면
     if(/^0+$/.test(result)) return "0";
     
     return result;
