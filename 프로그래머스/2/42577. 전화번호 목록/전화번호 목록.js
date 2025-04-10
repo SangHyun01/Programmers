@@ -1,8 +1,10 @@
 function solution(phone_book) {
-    let newArr = phone_book.sort();
-    for(let i=0; i<newArr.length-1; i++){
-        if(newArr[i+1].startsWith(newArr[i])){
-            return false;
+    const set = new Set(phone_book);
+    
+    for(let number of phone_book){
+        for(let i=1; i<number.length; i++){
+            const prefix = number.slice(0,i);
+            if(set.has(prefix)) return false;
         }
     }
     return true;
