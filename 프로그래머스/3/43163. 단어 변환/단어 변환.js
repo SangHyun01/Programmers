@@ -1,43 +1,40 @@
 function solution(begin, target, words) {
-    // 1. 타겟 단어가 없으면 0 리턴
-   if(!words.includes(target)) return 0;
+    // target이 words에 없으면 0
+    if(!words.includes(target)) return 0;
     
-    // 2. 큐 생성
-    const queue = [];
+    // 현재 단어, 변환 횟수
+    let queue = [];
+    // 방문 횟수
+    let visited = new Set();
+    
     queue.push([begin,0]);
+    visited.add(begin);
     
-    // 3. words 단어들을 이미 방문했는지 확인위한 배열
-    const visited = new Array(words.length).fill(false);
-    
-    // 4. 큐가 빌때까지 반복
-    while(queue.length > 0){
-        // 큐의 가장 앞에 있는 원소 꺼냄
-        let [currentWord, count] = queue.shift();
+    while(queue.length > 0) {
+        const [currentWord, count] = queue.shift();
         
-        // 꺼낸 단어가 target과 같으면 반환
         if(currentWord === target) {
             return count;
         }
         
-        // words 배열의 모든 단어를 순회하며 다음으로 변환할 단어 찾음
-        words.forEach((word, index) => {
-            if(!visited[index] && canConvert(currentWord, word)) {
-                visited[index] = true;
-                
+        for(const word of words) {
+            if(!visited.has(word) && isOne(currentWord, word)) {
+                visited.add(word);
                 queue.push([word, count + 1]);
             }
-        });
-    }
-    return 0;             
-}
-                      
-function canConvert(word1, word2) {
-    let diffCount = 0;
-    
-    for(let i=0; i<word1.length; i++){
-        if(word1[i] !== word2[i]) {
-            diffCount++;
         }
     }
-    return diffCount === 1;
+}
+
+
+// 두 단어가 하나의 글자만 다른지 확인 함수
+function isOne(strA, strB) {
+    let count = 0;
+    
+    for(let i=0; i<strA.length; i++) {
+        if(strA[i] !== strB[i]) {
+            count++;
+        }
+    }
+    return count === 1;
 }
