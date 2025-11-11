@@ -1,4 +1,5 @@
 function solution(maps) {
+    
     // 최단 거리 구하는 문제 -> BFS
     const n = maps.length; // 맵 세로 길이
     const m = maps[0].length; // 맵 가로 길이
@@ -42,3 +43,29 @@ function solution(maps) {
     
     return -1;
 }
+
+
+// 1이고 맵을 벗어나지 않으면 이동 가능, 카운트 증가
+
+// start === target 이면 종료
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
