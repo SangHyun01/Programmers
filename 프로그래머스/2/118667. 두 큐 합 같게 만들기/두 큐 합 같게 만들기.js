@@ -1,6 +1,4 @@
 function solution(queue1, queue2) {
-    let result = 0;
-    let count = 0;
     
     let sumOne = queue1.reduce((acc,cur) => acc+cur,0);
     let sumTwo = queue2.reduce((acc,cur) => acc+cur,0);
